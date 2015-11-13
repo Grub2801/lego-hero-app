@@ -7,10 +7,9 @@ var port            = process.env.PORT || 3000;
 var router          = express.Router();
 var expressLayouts  = require('express-ejs-layouts')
 var mongoose        = require('mongoose');
+var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/lego-hero';
 
-mongoose.connect('mongodb://localhost/lego-hero');
-var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/animalshelter';
-moongoose.connect(mongoUri);
+mongoose.connect(mongoUri);
 
 
 app.use(logger('dev'));
@@ -24,7 +23,13 @@ app.use(require('./controllers/api/heros'))
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-app.listen(process.env.PORT || 3000 )
+router.get('/', function(req, res){
+  res.redirect('/legoheros');
+})
+
+app.use(router);
+
+app.listen(port);
 console.log('Server started on ' + port);
 
 //development error handler
