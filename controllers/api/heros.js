@@ -5,7 +5,7 @@ var express        = require('express'),
 
 var Hero = require("../../models/hero");
 
-router.get('/api/legoheros', function (req, res){
+router.get('/legoheros', function (req, res){
   Hero.find({}, function (err, heros) {
     if (err) {
       res.send("something wrong happened " + err )
@@ -16,7 +16,7 @@ router.get('/api/legoheros', function (req, res){
 })
 
 //CREATE
-router.post('/api/legoheros', function (req, res){
+router.post('/legoheros', function (req, res){
   Hero.create(req.body, function (err, hero){
     console.log(req.body.hero);
     if (err) {
@@ -28,7 +28,7 @@ router.post('/api/legoheros', function (req, res){
 })
 
 //SHOW
-router.get('/api/legoheros/:id', function (req, res){
+router.get('/legoheros/:id', function (req, res){
   Hero.findById(req.params.id, function (err, hero){
     if (err) {
       res.send("something wrong happened " + err )
@@ -39,7 +39,7 @@ router.get('/api/legoheros/:id', function (req, res){
 })
 
 //UPDATE
-router.put('/api/legoheros/:id', function (req, res) {
+router.put('/legoheros/:id', function (req, res) {
   Hero.update({id: req.params.id }, req.body.hero, function (err, hero){
     if (err){
       res.send(err);
@@ -50,7 +50,7 @@ router.put('/api/legoheros/:id', function (req, res) {
 });
 
 //DELETE
-router.delete('/api/legoheros/:id/delete', function (req, res) {
+router.delete('/legoheros/:id/delete', function (req, res) {
    Hero.remove( {id: req.params.id }, function (err, hero) {
      if (err) {
        res.send(err);
@@ -59,5 +59,6 @@ router.delete('/api/legoheros/:id/delete', function (req, res) {
      }
   })
 });
+
 
 module.exports = router

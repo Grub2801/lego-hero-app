@@ -2,11 +2,12 @@ var express         = require('express');
 var path            = require('path');
 var logger          = require('morgan');
 var bodyParser      = require('body-parser');
+var expressLayouts  = require('express-ejs-layouts')
+var mongoose        = require('mongoose');
+
 var app             = express();
 var port            = process.env.PORT || 3000;
 var router          = express.Router();
-var expressLayouts  = require('express-ejs-layouts')
-var mongoose        = require('mongoose');
 var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/lego-hero';
 
 mongoose.connect(mongoUri);
@@ -18,7 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressLayouts);
 
 app.use(require('./controllers/heros'));
-app.use(require('./controllers/api/heros'))
+app.use('/api', require('./controllers/api/heros'))
+
 
 app.set('views', './views');
 app.set('view engine', 'ejs');

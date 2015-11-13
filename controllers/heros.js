@@ -33,6 +33,17 @@ router.get('/legoheros/:id/desired', function (req, res){
   })
 });
 
+//DELETE
+router.delete('/legoheros/:id/delete', function (req, res) {
+  Hero.remove( {id: req.params.id }, function (err, hero) {
+    if (err) {
+      res.send("something wrong happened " + err )
+    } else {
+      res.redirect('/legoheros');
+     }
+  })
+});
+
 // //SHOW
 // router.get('/legoheros/:id', function (req, res){
 //   Hero.findById(req.params.id, function (err, hero){
@@ -55,15 +66,5 @@ router.get('/legoheros/:id/desired', function (req, res){
 //   })
 // });
 
-// //DELETE
-// router.delete('/legoheros/:id/delete', function (req, res) {
-//    Hero.remove( {id: req.params.id }, function (err, hero) {
-//      if (err) {
-//        res.send(err);
-//      } else {
-//        res.json({message: 'Succesfully deleted'})
-//      }
-//   })
-// });
 
 module.exports = router
