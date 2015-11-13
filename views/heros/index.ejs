@@ -1,0 +1,42 @@
+<fieldset>
+  <legend>Add a Superhero</legend>
+  <form method="POST" action="/legoheros">
+    <div class="form-group col-md-4">
+      <input name="hero[character]" class="form-control" placeholder="Character"/>
+    </div>
+    <div class="form-group col-md-4">
+      <input name="hero[full_name]"  class="form-control" placeholder="Full name"/>
+    </div>
+    <div class="form-group col-md-4">
+      <input name="hero[occupation]"  class="form-control" placeholder="Occupation"/>
+    </div>
+    <div class="form-group col-md-4">
+      <input name="hero[power]"  class="form-control" placeholder="Power"/>
+    </div>
+    <div class="form-group col-md-4">
+      <button class="btn btn-success col-md-12">Add a Superhero</button>
+    </div>
+  </form>
+</fieldset>
+
+<ul>
+<% heros.forEach( function(hero){ %>
+  <li>
+    <h2><%= hero.character %></h2>
+    <ul>
+      <li><b>Full Name :  </b> <%= hero.full_name %></li>
+      <li><b>Occupation :    </b> <%= hero.occupation %></li>
+      <li><b>Power : </b> <%= hero.power %></li>
+      <li>
+        <% if (hero.status == "Arthur wants it!"){ %>
+          <a href="/legoheros/<%= hero.id %>/collected">Arthur owns it!</a>
+        <% } else { %>
+          <a href="/legoheros/<%= hero.id %>/desired">Arthur wants it!</a>
+        <% } %>
+      </li>
+    </ul>
+  </li>
+
+<% }) %>
+
+</ul>
