@@ -4,6 +4,7 @@ var logger          = require('morgan');
 var bodyParser      = require('body-parser');
 var expressLayouts  = require('express-ejs-layouts')
 var mongoose        = require('mongoose');
+var methodOverride  = require('method-override');
 
 var app             = express();
 var port            = process.env.PORT || 3000;
@@ -17,6 +18,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressLayouts);
+app.use(methodOverride('_method'));
 
 app.use(require('./controllers/heros'));
 app.use('/api', require('./controllers/api/heros'))

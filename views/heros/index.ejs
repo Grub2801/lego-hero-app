@@ -22,7 +22,7 @@
 <ul>
 <% heros.forEach( function(hero){ %>
   <li>
-    <h2><%= hero.character %></h2>
+    <h2><a href="/legoheros/<%= hero.id %>/show"><%= hero.character %></a></h2>
     <ul>
       <li><b>Full Name :  </b> <%= hero.full_name %></li>
       <li><b>Occupation :    </b> <%= hero.occupation %></li>
