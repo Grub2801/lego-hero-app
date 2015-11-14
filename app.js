@@ -13,7 +13,7 @@ var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/lego-hero';
 
 mongoose.connect(mongoUri);
 
-
+app.use(express.static('public'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
