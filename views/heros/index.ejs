@@ -22,8 +22,11 @@
             <div class="form-group col-xs-12">
               <p><input name="hero[power]"  class="form-control" placeholder="Power"/></p>
             </div>
+            <div class="form-group col-xs-12">
+              <p><input name="hero[photoUrl]"  class="form-control" placeholder="Photo URL"/></p>
+            </div>
             <div class="col-xs-12 text-center">
-              <button class="btn btn-lg btn-outline">Add a Superhero</button>
+              <button class="btn btn-lg btn-success">Add a Superhero</button>
             </div>
           </form>
         </fieldset>
@@ -40,10 +43,13 @@
         <hr>
       </div>
     </div>
+
     <div class="row">
-      <div class="col-sm-4 portfolio-item">
+      <div class="col-xs-12 lego-items">
         <% heros.forEach( function(hero){ %>
-            <h3><a class="index-link" href="/legoheros/<%= hero.id %>/show"><%= hero.character %></a></h3>
+          <div class="col-xs-12 col-sm-6 col-md-4 pull-left">
+              <img src="<%= hero.showPhoto() %>" class="hero-photo"><%= hero.photoUrl %></p>
+              <h3><a class="index-link" href="/legoheros/<%= hero.id %>/show"><%= hero.character %></a></h3>
               <p><b>Full Name :  </b> <%= hero.full_name %></p>
               <p><b>Occupation :    </b> <%= hero.occupation %></p>
               <p><b>Power : </b> <%= hero.power %></p>
@@ -54,6 +60,8 @@
                   <a href="/legoheros/<%= hero.id %>/desired">Arthur wants it!</a>
                 <% } %>
               </p>
+
+          </div>
         <% }) %>
       </div>
     </div>
