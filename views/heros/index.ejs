@@ -1,42 +1,69 @@
-<fieldset>
-  <legend>Add a Superhero</legend>
-  <form method="POST" action="/legoheros">
-    <div class="form-group col-md-4">
-      <input name="hero[character]" class="form-control" placeholder="Character"/>
+<section class="success" id="new">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2>Add a Superhero</h2>
+        <hr>
+      </div>
     </div>
-    <div class="form-group col-md-4">
-      <input name="hero[full_name]"  class="form-control" placeholder="Full name"/>
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <fieldset>
+          <form method="POST" action="/legoheros">
+            <div class="form-group col-xs-12">
+              <p><input name="hero[character]" class="form-control" placeholder="Character"/></p>
+            </div>
+            <div class="form-group col-xs-12">
+              <p><input name="hero[full_name]"  class="form-control" placeholder="Full name"/></p>
+            </div>
+            <div class="form-group col-xs-12">
+              <p><input name="hero[occupation]"  class="form-control" placeholder="Occupation"/></p>
+            </div>
+            <div class="form-group col-xs-12">
+              <p><input name="hero[power]"  class="form-control" placeholder="Power"/></p>
+            </div>
+            <div class="form-group col-xs-12">
+              <p><input name="hero[photoUrl]"  class="form-control" placeholder="Photo URL"/></p>
+            </div>
+            <div class="col-xs-12 text-center">
+              <button class="btn btn-lg btn-success">Add a Superhero</button>
+            </div>
+          </form>
+        </fieldset>
+      </div>
     </div>
-    <div class="form-group col-md-4">
-      <input name="hero[occupation]"  class="form-control" placeholder="Occupation"/>
-    </div>
-    <div class="form-group col-md-4">
-      <input name="hero[power]"  class="form-control" placeholder="Power"/>
-    </div>
-    <div class="form-group col-md-4">
-      <button class="btn btn-success col-md-12">Add a Superhero</button>
-    </div>
-  </form>
-</fieldset>
+  </div>
+</section>
 
-<ul>
-<% heros.forEach( function(hero){ %>
-  <li>
-    <h2><a href="/legoheros/<%= hero.id %>/show"><%= hero.character %></a></h2>
-    <ul>
-      <li><b>Full Name :  </b> <%= hero.full_name %></li>
-      <li><b>Occupation :    </b> <%= hero.occupation %></li>
-      <li><b>Power : </b> <%= hero.power %></li>
-      <li>
-        <% if (hero.status == "Arthur wants it!"){ %>
-          <a href="/legoheros/<%= hero.id %>/collected">Arthur owns it!</a>
-        <% } else { %>
-          <a href="/legoheros/<%= hero.id %>/desired">Arthur wants it!</a>
-        <% } %>
-      </li>
-    </ul>
-  </li>
+<section id="index">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2>Index</h2>
+        <hr>
+      </div>
+    </div>
 
-<% }) %>
+    <div class="row">
+      <div class="col-xs-12 lego-items">
+        <% heros.forEach( function(hero){ %>
+          <div class="col-xs-12 col-sm-6 col-md-4 pull-left">
+              <img src="<%= hero.showPhoto() %>" class="hero-photo"><%= hero.photoUrl %></p>
+              <h3><a class="index-link" href="/legoheros/<%= hero.id %>/show"><%= hero.character %></a></h3>
+              <p><b>Full Name :  </b> <%= hero.full_name %></p>
+              <p><b>Occupation :    </b> <%= hero.occupation %></p>
+              <p><b>Power : </b> <%= hero.power %></p>
+              <p>
+                <% if (hero.status == "Arthur wants it!"){ %>
+                  <a href="/legoheros/<%= hero.id %>/collected">Arthur owns it!</a>
+                <% } else { %>
+                  <a href="/legoheros/<%= hero.id %>/desired">Arthur wants it!</a>
+                <% } %>
+              </p>
 
-</ul>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>

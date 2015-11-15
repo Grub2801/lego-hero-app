@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Lego SuperHeros</title>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
-    <title>Arthur's Lego SuperHeros</title>
+    <link href='/css/style.css' rel='stylesheet' >
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
   </head>
 
-  <body class="container-fluid"
+  <body id="page-top" class="index container-fluid">
 
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2 well">
-        <h1>The Lego Superhero Collection</h1>
-        <%- body %>
-      </div>
-    </div>
+    <nav>
+      <% include partials/navbar %>
+    </nav>
+
+    <header>
+      <% include partials/header %>
+    </header>
+
+    <body>
+      <%- body %>
+    </body>
+
+    <section>
+      <% include partials/about %>
+    </section>
+
+    <footer>
+      <% include partials/footer %>
+    </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 
   </body>
