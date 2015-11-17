@@ -1,39 +1,62 @@
 var express         = require('express');
+var app             = express();
+var mongoose        = require('mongoose');
+var passport        = require('passport');
+var flash           = require('connect-flash');
+var ejsLayouts      = require('express-ejs-layouts');
+var morgan          = require('morgan');
+var cookieParser    = require('cookie-parser');
+var bodyParser      = require('body-parser');
+var session         = require('express-session');
+
+mongoose.connect('mongodb://localhost:27017/lego-hero');
+// mongoose.connect('mongodb://localhost:27017/auth-lego-app')
+
+// var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/lego-hero';
+// mongoose.connect(mongoUri);
+
+app.use(morgan('dev'));
+app.use(cookieParser());
+app.use(bodyParser.json());
+
+app.set('view engine', 'ejs');
+app.use(ejsLayouts);
+app.set('views', './views');
+app.use(express.static(__dirname + '/public'));
+
+app.use(session({ secret: 'WDI GENERAL ASSEMBLY EXPRESS' }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+require('./config/passport')(passport);
+
+// app.use('/api', require('./controllers/api/heros'))
+
+app.use(function (req, res, next) {
+  global.user = req.user;
+  next();
+});
+
 var path            = require('path');
 var logger          = require('morgan');
-var bodyParser      = require('body-parser');
-var expressLayouts  = require('express-ejs-layouts')
-var mongoose        = require('mongoose');
+var helpers         = require('express-helpers');
 var methodOverride  = require('method-override');
 
-var app             = express();
-var port            = process.env.PORT || 3000;
-var router          = express.Router();
-var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/lego-hero';
-
-mongoose.connect(mongoUri);
-
-app.use(express.static('public'));
 app.use(logger('dev'));
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(expressLayouts);
 app.use(methodOverride('_method'));
 
-app.use(require('./controllers/heros'));
-app.use('/api', require('./controllers/api/heros'))
+// router.get('/', function(req, res){
+//   res.redirect('/legoheros');
+// })
 
+var routes = require('./config/routes');
+app.use(routes);
 
-app.set('views', './views');
-app.set('view engine', 'ejs');
-
-router.get('/', function(req, res){
-  res.redirect('/legoheros');
-})
-
-app.use(router);
-
+var port            = process.env.PORT || 3000;
 app.listen(port);
+
 console.log('Server started on ' + port);
 
 //development error handler
@@ -57,5 +80,3 @@ app.use(function(err, req, res, next){
     error: {}
   });
 });
-
-

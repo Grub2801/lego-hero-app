@@ -49,7 +49,8 @@
         <% heros.forEach( function(hero){ %>
           <div class="col-xs-12 col-sm-6 col-md-4 pull-left">
               <img src="<%= hero.showPhoto() %>" class="hero-photo">
-              <h3><a class="index-link" href="/legoheros/<%= hero.id %>/show"><%= hero.character %></a></h3>
+
+              <h3><a class="index-link" href="/legoheros/<%= hero.id %>"><%= hero.character %></a></h3>
               <p><b>Full Name :  </b> <%= hero.full_name %></p>
               <p><b>Occupation :    </b> <%= hero.occupation %></p>
               <p><b>Power : </b> <%= hero.power %></p>
