@@ -10,7 +10,6 @@ var bodyParser      = require('body-parser');
 var session         = require('express-session');
 
 mongoose.connect('mongodb://localhost:27017/lego-hero');
-// mongoose.connect('mongodb://localhost:27017/auth-lego-app')
 
 // var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/lego-hero';
 // mongoose.connect(mongoUri);

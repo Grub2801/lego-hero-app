@@ -27,9 +27,6 @@ router.route('/login')
 router.route("/logout")
   .get(usersController.getLogout);
 
-// router.route("/secret")
-//   .get(authenticatedUser, usersController.secret);
-
 // lego routes
 router.route('/')
   .get(function(req, res){
@@ -46,10 +43,14 @@ router.route('/legoheros/:id/collected')
 router.route('/legoheros/:id/desired')
   .get(herosController.desired);
 
+router.route('/legoheros/:id/edit')
+  .get(authenticatedUser, herosController.editLegoHero);
+
+router.route('/legoheros/:id/delete')
+  .get(authenticatedUser, herosController.removeLegoHero);
+
 router.route('/legoheros/:id')
   .get(herosController.getLegoHero)
-  .get(herosController.editLegoHero)
-  .patch(herosController.updateLegoHero)
-  .delete(herosController.removeLegoHero);
+  .put(authenticatedUser, herosController.updateLegoHero);
 
 module.exports = router;
