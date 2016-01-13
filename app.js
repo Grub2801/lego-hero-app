@@ -9,10 +9,10 @@ var cookieParser    = require('cookie-parser');
 var bodyParser      = require('body-parser');
 var session         = require('express-session');
 
-mongoose.connect('mongodb://localhost:27017/lego-hero');
+// mongoose.connect('mongodb://localhost:27017/lego-hero');
 
-// var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/lego-hero';
-// mongoose.connect(mongoUri);
+var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/lego-hero';
+mongoose.connect(mongoUri);
 
 app.use(morgan('dev'));
 app.use(cookieParser());
