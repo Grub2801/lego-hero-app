@@ -1,0 +1,16 @@
+<h2 id="login">Login</h2>
+
+<% if (message.length > 0) { %>
+  <div class="alert alert-danger"><%= message %></div>
+<% } %>
+
+<form method="post" action="/login">
+  <div class="form-group">
+    <input class="form-control" type="text" name="email" placeholder="Email" id="email">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="password" name="password" placeholder="Password" id="password">
+  </div>
+  <input class="btn btn-special" type="submit">
+</form>
+<br>

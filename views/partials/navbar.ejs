@@ -10,25 +10,20 @@
           </button>
           <a class="navbar-brand" href="#page-top">Lego Superheros</a>
       </div>
-
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-              <li class="hidden">
-                  <a href="#page-top"></a>
-              </li>
-              <li class="page-scroll">
-                  <a href="http://localhost:3000/legoheros#index">Index</a>
-              </li>
-              <li class="page-scroll">
-                <a href="http://localhost:3000/legoheros#new">Add a Superhero</a>
-              </li>
-              <li class="page-scroll">
-                  <a href="#about">About</a>
-              </li>
-              <li class="page-scroll">
-                  <a href="#contact">Contact</a>
-              </li>
+              <% if (user) { %>
+                <li><a href="/logout">Logout</a></li>
+              <% } else { %>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/signup">Signup</a></li>
+              <% } %>
+              <li class="hidden"><a href="#page-top"></a></li>
+              <li class="page-scroll"><a href="#index">Index</a></li>
+              <li class="page-scroll"><a href="#new">Add a Superhero</a></li>
+              <li class="page-scroll"><a href="#about">About</a></li>
+              <li class="page-scroll"><a href="#contact">Contact</a></li>
           </ul>
       </div>
       <!-- /.navbar-collapse -->
