@@ -2,7 +2,7 @@
   <div id="edit" class="container success">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2>Edit Superhero</h2>
+        <h2>Edit Collection</h2>
         <hr>
       </div>
     </div>
@@ -11,22 +11,23 @@
         <fieldset>
           <form action="/legoheros/<%= hero.id %>?_method=PUT%>" method="POST">
             <div class="form-group col-xs-12">
-              <p><input name="hero[character]" class="form-control" value="<%= hero.character %>" placeholder="Character"/></p>
+              <p><input name="hero[character]" class="form-control" value="<%= hero.character %>" placeholder="Character or Collection"/></p>
             </div>
             <div class="form-group col-xs-12">
-              <p><input name="hero[full_name]"  class="form-control" value="<%= hero.full_name %>" placeholder="Full name"/></p>
+              <p><input name="hero[full_name]"  class="form-control" value="<%= hero.full_name %>" placeholder="Full name or Model Number"/></p>
             </div>
             <div class="form-group col-xs-12">
-              <p><input name="hero[occupation]"  class="form-control" value="<%= hero.occupation %>" placeholder="Occupation"/></p>
+              <p><input name="hero[occupation]"  class="form-control" value="<%= hero.occupation %>" placeholder="Description"/></p>
             </div>
-            <div class="form-group col-xs-12">
+
+<!--             <div class="form-group col-xs-12">
               <p><input name="hero[power]"  class="form-control" value="<%= hero.power %>" placeholder="Power"/></p>
-            </div>
+            </div> -->
             <div class="form-group col-xs-12">
               <p><input name="hero[photoUrl]"  class="form-control" value="<%= hero.photoUrl %>" placeholder="Photo URL"/></p>
             </div>
             <div class="form-group col-xs-12 text-center">
-              <button class="btn btn-lg btn-special">Update Superhero</button>
+              <button class="btn btn-lg btn-special">Update</button>
             </div>
           </form>
         </fieldset>

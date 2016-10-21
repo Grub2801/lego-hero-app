@@ -8,9 +8,9 @@
   <div class="row">
     <div class="col-lg-12">
       <img src="<%= hero.showPhoto() %>" class="hero-photo">
-      <p><b>Full Name : </b> <%= hero.full_name %></p>
-      <p><b>Occupation : </b> <%= hero.occupation %></p>
-      <p><b>Power : </b> <%= hero.power %></p>
+      <p><b>Name/Model No : </b> <%= hero.full_name %></p>
+      <p><b>Description : </b> <%= hero.occupation %></p>
+      <!-- <p><b>Power : </b> <%= hero.power %></p> -->
       <p>
         <% if (hero.status == "Arthur wants it!"){ %>
           <a href="/legoheros/<%= hero.id %>/collected">Arthur owns it!</a>
