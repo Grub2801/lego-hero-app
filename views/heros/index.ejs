@@ -47,9 +47,9 @@
     <div class="row">
       <div class="col-xs-12 lego-items">
         <% heros.forEach( function(hero){ %>
-          <div class="col-xs-12 col-sm-6 col-md-4 pull-left">
-              <img src="<%= hero.showPhoto() %>" class="hero-photo">
-
+          <div class="lego_image col-xs-12 col-sm-6 col-md-4 pull-left"  style="background-image: url('<%= hero.showPhoto() %>');">
+              <!-- <img src="<%= hero.showPhoto() %>" class="hero-photo"> -->
+          </div>
               <h3><a class="index-link" href="/legoheros/<%= hero.id %>"><%= hero.character %></a></h3>
               <p><b>Name/Model No :  </b> <%= hero.full_name %></p>
               <p><b>Description :    </b> <%= hero.occupation %></p>

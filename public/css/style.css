@@ -234,10 +234,13 @@ section.success a.active {
   display: flex;
 }
 
-img.hero-photo {
-  height: 300px;
-  width: auto;
+.lego_image {
   padding-bottom: 15px;
+  height: 300px;
+  width: 100%;
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-position:center;
 }
 
 footer#contact {
